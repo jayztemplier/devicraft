@@ -1,0 +1,38 @@
+<h3>Dashboard</h3>
+<script>
+    $(".alert-message").alert('close')
+</script>
+
+<% flash.each do |name, msg| %>
+    <div class="alert-message warning" data-alert="close">
+      <a class="close" href="#">×</a>
+
+      <p><%= msg %></p>
+    </div>
+<% end %>
+
+<p>
+<p><strong>Status : </strong> <%= @status %></p>
+<%= link_to "Start Server", start_dashboard_url, class: "btn success" %>
+<%= link_to "Stop Server", stop_dashboard_url, class: "btn danger" %>
+</p>
+
+<%= form_tag "/dashboard/say", class: "form-stacked" do %>
+    <%= text_field_tag 'message' %>
+    <%= submit_tag "Say it!", class: "btn primary" %>
+<% end %>
+<%= form_tag "/dashboard/give", class: "form-stacked" do %>
+    <%= label_tag 'user' %><%= text_field_tag 'user' %>
+    <%= label_tag 'number' %><%= number_field_tag 'number' %>
+    <%= label_tag 'object' %><%= number_field_tag 'object' %>
+    <%= submit_tag "Give!", class: "btn primary" %>
+<% end %>
+
+
+<p>Players :</p>
+<% @users.each do |u| %>
+    <p><%= u %></p>
+<% end %>
+
+
+
