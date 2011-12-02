@@ -2,6 +2,7 @@ class DashboardController < ApplicationController
   before_filter :set_server
 
   def index
+    @title = "Dashboard"
     @status = @server.status
     @users = @server.list
   end
