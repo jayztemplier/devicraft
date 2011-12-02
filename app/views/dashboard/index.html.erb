@@ -30,9 +30,25 @@
 
 
 <p>Players :</p>
-<% @users.each do |u| %>
-    <p><%= u %></p>
-<% end %>
+<table class="bordered-table">
+  <thead>
+  <tr>
+    <th>Player</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |u| %>
+      <tr>
+        <th><%= u %></th>
+        <th>
+           <%= link_to "Give object", "#", class: "btn primary" %>
+        </th>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
 
 
 
