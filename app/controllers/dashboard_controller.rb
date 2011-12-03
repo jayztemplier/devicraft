@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_filter :authenticate_craftsman!
   before_filter :set_server
 
   def index

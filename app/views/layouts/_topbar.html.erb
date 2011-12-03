@@ -1,0 +1,27 @@
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <%= link_to "DeviCraft", home_path, class: "brand" %>
+      <ul class="nav">
+        <li class="active"><%= link_to "Dashboard", dashboard_path %></li>
+        <li><a>Players</a></li>
+        <li><a>Objects</a></li>
+      </ul>
+
+      <ul class="nav secondary-nav">
+        <li>
+          <% if craftsman_signed_in? %>
+              <%= link_to('Logout', destroy_craftsman_session_path, :method => :delete) %>
+          <% else %>
+              <%= form_for(Craftsman.new, :url => session_path("craftsman"), class: "pull-left") do |f| %>
+                  <%= f.email_field :email, placeholder: "email", class: "top_bar_input" %>
+                  <%= f.password_field :password, placeholder: "password", class: "top_bar_input" %>
+                  <%= f.submit "Sign in", class: "btn primary" %>
+              <% end %>
+          <% end %>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

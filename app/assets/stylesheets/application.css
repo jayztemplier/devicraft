@@ -24,3 +24,7 @@ html, body {
     margin: 20px -20px 20px;
     padding: 20px 20px 10px;
 }
+
+.top_bar_input {
+    width: 150px;
+}
