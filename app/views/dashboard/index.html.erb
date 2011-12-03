@@ -11,43 +11,76 @@
     </div>
 <% end %>
 
-<p>
-<p><strong>Status : </strong> <%= @status %></p>
-<%= link_to "Start Server", start_dashboard_url, class: "btn success" %>
-<%= link_to "Stop Server", stop_dashboard_url, class: "btn danger" %>
-</p>
+<div class="row">
+  <div class="span3 offset4">
+    <p><strong>Status : </strong> <%= @status %></p>
+  </div>
+  <div class="span6">
+    <%= link_to "Start Server", start_dashboard_url, class: "btn success" %>
+    <%= link_to "Stop Server", stop_dashboard_url, class: "btn danger" %>
+  </div>
+</div>
 
-<%= form_tag "/dashboard/say", class: "form-stacked" do %>
-    <%= text_field_tag 'message' %>
-    <%= submit_tag "Say it!", class: "btn primary" %>
-<% end %>
-<%= form_tag "/dashboard/give", class: "form-stacked" do %>
-    <%= label_tag 'user' %><%= text_field_tag 'user' %>
-    <%= label_tag 'number' %><%= number_field_tag 'number' %>
-    <%= label_tag 'object' %><%= number_field_tag 'object' %>
-    <%= submit_tag "Give!", class: "btn primary" %>
-<% end %>
+<div class="row">
+  <div class="span4 offset1">
+    <p>Send a message to all players :</p>
+  </div>
+  <div class="span6">
+    <%= form_tag "/dashboard/say", class: "form-stacked" do %>
+        <%= text_field_tag 'message' %>
+        <%= submit_tag "Say it!", class: "btn primary" %>
+    <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="span7 offset4">
+    <%= form_tag "/dashboard/give" do %>
+        <fieldset>
+          <legend>Give an object to a Player.</legend>
+          <div class="clearfix">
+            <%= label_tag 'user' %>
+            <div class="input"><%= text_field_tag 'user' %></div>
+          </div>
+          <div class="clearfix">
+            <%= label_tag 'number' %>
+            <div class="input"><%= number_field_tag 'number' %></div>
+          </div>
+          <div class="clearfix">
+            <%= label_tag 'object' %>
+            <div class="input"><%= number_field_tag 'object' %></div>
+          </div>
+          <div class="actions">
+            <%= submit_tag "Give!", class: "btn primary" %>
+          </div>
+        </fieldset>
+    <% end %>
+  </div>
+</div>
 
-<p>Players :</p>
-<table class="bordered-table">
-  <thead>
-  <tr>
-    <th>Player</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |u| %>
+<div class="row">
+  <div class="span10 offset3">
+    <p>Players :</p>
+    <table class="bordered-table">
+      <thead>
       <tr>
-        <th><%= u %></th>
-        <th>
-           <%= link_to "Give object", "#", class: "btn primary" %>
-        </th>
+        <th>Player</th>
+        <th>Action</th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+      <% @users.each do |u| %>
+          <tr>
+            <th><%= u %></th>
+            <th>
+              <%= link_to "Give object", "#", class: "btn primary" %>
+            </th>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 
