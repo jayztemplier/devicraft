@@ -34,31 +34,6 @@
 </div>
 
 <div class="row">
-  <div class="span7 offset4">
-    <%= form_tag "/dashboard/give" do %>
-        <fieldset>
-          <legend>Give an object to a Player.</legend>
-          <div class="clearfix">
-            <%= label_tag 'user' %>
-            <div class="input"><%= text_field_tag 'user' %></div>
-          </div>
-          <div class="clearfix">
-            <%= label_tag 'number' %>
-            <div class="input"><%= number_field_tag 'number' %></div>
-          </div>
-          <div class="clearfix">
-            <%= label_tag 'object' %>
-            <div class="input"><%= number_field_tag 'object' %></div>
-          </div>
-          <div class="actions">
-            <%= submit_tag "Give!", class: "btn primary" %>
-          </div>
-        </fieldset>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
   <div class="span10 offset3">
     <p>Players :</p>
     <table class="bordered-table">
@@ -73,12 +48,20 @@
           <tr>
             <th><%= u %></th>
             <th>
-              <%= link_to "Give object", "#", class: "btn primary" %>
+              <%= form_tag "/dashboard/give" do %>
+                  <%= hidden_field_tag "user", u %>
+                  <%= number_field_tag 'number',"" , class: "field_in_table", placeholder: "number" %>
+                  <%= number_field_tag 'object',"", class: "field_in_table", placeholder: "object" %>
+                  <%= submit_tag "Give!", class: "btn primary" %>
+              <% end %>
             </th>
           </tr>
       <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="offset2">
+    <%= image_tag "data_values.png" %>"
   </div>
 </div>
 
