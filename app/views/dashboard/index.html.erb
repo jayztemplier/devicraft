@@ -34,27 +34,32 @@
 </div>
 
 <div class="row">
-  <div class="span10 offset3">
+  <div class="span14 offset1">
     <p>Players :</p>
     <table class="bordered-table">
       <thead>
       <tr>
         <th>Player</th>
-        <th>Action</th>
+        <th>Give an object</th>
+        <th>Kick or Pardon</th>
       </tr>
       </thead>
       <tbody>
       <% @users.each do |u| %>
           <tr>
-            <th><%= u %></th>
-            <th>
+            <td><%= u %></td>
+            <td>
               <%= form_tag "/dashboard/give" do %>
                   <%= hidden_field_tag "user", u %>
                   <%= number_field_tag 'number',"" , class: "field_in_table", placeholder: "number" %>
                   <%= number_field_tag 'object',"", class: "field_in_table", placeholder: "object" %>
                   <%= submit_tag "Give!", class: "btn primary" %>
               <% end %>
-            </th>
+            </td>
+            <td>
+              <%= link_to "Kick", "#", class: "btn danger" %>
+              <%= link_to "Pardon", "#", class: "btn primary" %>
+            </td>
           </tr>
       <% end %>
       </tbody>
